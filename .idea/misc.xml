@@ -5,7 +5,10 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/colleagues.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/colleagues_list.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_colleagues.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/fragment_room.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/room_list.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/roomlist.xml" value="0.253125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
