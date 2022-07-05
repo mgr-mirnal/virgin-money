@@ -33,5 +33,4 @@ class ServiceModel {
 
     @Provides
     fun provideCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
-
 }

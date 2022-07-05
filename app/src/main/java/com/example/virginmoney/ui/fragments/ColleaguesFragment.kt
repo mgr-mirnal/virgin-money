@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.virginmoney.databinding.FragmentColleaguesBinding
 import com.example.virginmoney.model.people.People
+import com.example.virginmoney.model.people.PeopleItem
 import com.example.virginmoney.ui.ResponseState
 import com.example.virginmoney.ui.adapter.ColleagueAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ColleaguesFragment : ViewModelFragment() {
 
     private var _binding: FragmentColleaguesBinding? = null
@@ -27,13 +29,14 @@ class ColleaguesFragment : ViewModelFragment() {
         _binding = FragmentColleaguesBinding.inflate(
             inflater, container, false
         )
+        viewModel.setLoadingState()
         configureObserver()
         return binding.root
     }
 
 
     private fun configureObserver() {
-        viewModel.getPeopleList()
+
         viewModel.peopleResponse.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseState.SUCCESS<*> -> {

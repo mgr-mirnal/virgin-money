@@ -19,7 +19,7 @@ class RepositoryImp {
     ): Repository{
 
         override fun getPeople() = flow {
-            emit(ResponseState.Loading)
+
             try{
                 val response = service.getPeople()
                 if(response.isSuccessful) {

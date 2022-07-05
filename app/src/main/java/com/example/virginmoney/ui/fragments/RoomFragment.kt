@@ -10,8 +10,9 @@ import com.example.virginmoney.databinding.FragmentRoomBinding
 import com.example.virginmoney.model.rooms.Room
 import com.example.virginmoney.ui.ResponseState
 import com.example.virginmoney.ui.adapter.RoomAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RoomFragment : ViewModelFragment() {
 
     private var _binding: FragmentRoomBinding? = null
@@ -35,7 +36,7 @@ class RoomFragment : ViewModelFragment() {
 
 
     private fun configureObservers(){
-    viewModel.getRoomList()
+        viewModel.setRoomLoadingState()
         viewModel.roomResponse.observe(viewLifecycleOwner){
             when(it){
                 is ResponseState.SUCCESS<*> ->{

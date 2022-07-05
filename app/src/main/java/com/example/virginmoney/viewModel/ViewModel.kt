@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.virginmoney.model.Repository
+import com.example.virginmoney.model.people.PeopleItem
 import com.example.virginmoney.ui.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -37,6 +38,8 @@ class ViewModel @Inject constructor(
 
         }
     }
+    lateinit var currentColleague: PeopleItem
+
     private val _peopleResponse = MutableLiveData<ResponseState>()
     val peopleResponse: LiveData<ResponseState>
         get() = _peopleResponse
@@ -63,4 +66,12 @@ class ViewModel @Inject constructor(
         }
 
     }
+
+    fun setColleagueDetails(node: PeopleItem) {
+        currentColleague = node
+        _peopleResponse.value = ResponseState.Loading
+    }
+
+    fun setLoadingState(){_peopleResponse.value = ResponseState.Loading}
+    fun setRoomLoadingState(){_roomResponse.value = ResponseState.Loading}
 }
