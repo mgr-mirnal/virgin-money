@@ -5,7 +5,7 @@ import com.example.virginmoney.model.rooms.Room
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface Api {
+interface ApiService {
     @GET("/rooms")
     suspend fun getRoom() : Response<Room>
 

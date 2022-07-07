@@ -1,8 +1,8 @@
 package com.example.virginmoney.di
 
-import com.example.virginmoney.api.Api
+import com.example.virginmoney.api.ApiService
 import com.example.virginmoney.model.Repository
-import com.example.virginmoney.model.RepositoryImp
+import com.example.virginmoney.model.RepositoryImpl
 
 import dagger.Module
 import dagger.Provides
@@ -20,18 +20,17 @@ const val BASE_URL = "https://61e947967bc0550017bc61bf.mockapi.io/api/v1/"
 class ServiceModel {
 
     @Provides
-    fun provideApiService(): Api =
+    fun provideApiService(): ApiService =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(Api::class.java)
+            .create(ApiService::class.java)
 
     @Provides
-    fun provideRepositoryLayer(service: Api) : Repository =
-        RepositoryImp.RepositoryImpl(service)
+    fun provideRepositoryLayer(service: ApiService) : Repository =
+        RepositoryImpl(service)
 
     @Provides
     fun provideCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
-
 }

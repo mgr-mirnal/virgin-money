@@ -1,7 +1,6 @@
 package com.example.virginmoney.ui.fragments
 
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,9 @@ import com.example.virginmoney.databinding.FragmentRoomBinding
 import com.example.virginmoney.model.rooms.Room
 import com.example.virginmoney.ui.ResponseState
 import com.example.virginmoney.ui.adapter.RoomAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RoomFragment : ViewModelFragment() {
 
     private var _binding: FragmentRoomBinding? = null
@@ -29,13 +29,14 @@ class RoomFragment : ViewModelFragment() {
         _binding = FragmentRoomBinding.inflate(
             inflater, container, false
         )
+        viewModel.setRoomLoadingState()
         configureObservers()
         return binding.root
     }
 
 
     private fun configureObservers(){
-    viewModel.getRoomList()
+
         viewModel.roomResponse.observe(viewLifecycleOwner){
             when(it){
                 is ResponseState.SUCCESS<*> ->{
@@ -50,7 +51,6 @@ class RoomFragment : ViewModelFragment() {
                 }
                 is ResponseState.Loading -> {
                     viewModel.getRoomList()
-
                 }
             }
 

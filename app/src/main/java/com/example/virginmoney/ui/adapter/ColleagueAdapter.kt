@@ -9,7 +9,8 @@ import com.example.virginmoney.databinding.ColleaguesListBinding
 import com.example.virginmoney.model.people.PeopleItem
 
 class ColleagueAdapter (
-    private val peopleList: MutableList<PeopleItem> = mutableListOf()
+    private val peopleList: MutableList<PeopleItem> = mutableListOf(),
+            private val openColleaguesDetails: (PeopleItem) -> Unit
     ):RecyclerView.Adapter<ColleagueAdapter.PeopleListViewHolder>(){
 
 
@@ -30,13 +31,16 @@ class ColleagueAdapter (
         inner class PeopleListViewHolder(
             private val binding: ColleaguesListBinding
         ): RecyclerView.ViewHolder(binding.root) {
-            fun onBind(item: PeopleItem){
+            fun onBind(item: PeopleItem, openColleaguesDetails: (PeopleItem) -> Unit){
                 binding.tvFirstName.text = item.firstName
                 binding.tvLastName.text = item.lastName
                 binding.tvJobTittle.text = item.jobtitle
                 Glide.with(binding.ivUserLogo)
                     .load(item.avatar)
                     .into(binding.ivUserLogo)
+                binding.btnDetails.setOnClickListener {
+                    openColleaguesDetails(item)
+                }
             }
         }
 
@@ -52,7 +56,7 @@ class ColleagueAdapter (
         }
 
         override fun onBindViewHolder(holder: PeopleListViewHolder, position: Int) {
-            holder.onBind(peopleList[position])
+            holder.onBind(peopleList[position], openColleaguesDetails)
         }
 
         override fun getItemCount(): Int = peopleList.size

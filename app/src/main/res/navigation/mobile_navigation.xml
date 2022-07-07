@@ -9,12 +9,30 @@
         android:id="@+id/navigation_colleagues"
         android:name="com.example.virginmoney.ui.fragments.ColleaguesFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_colleagues" />
+        tools:layout="@layout/fragment_colleagues" >
+        <action
+            android:id="@+id/action_navigation_colleagues_to_colleagueDetailsFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/colleagueDetailsFragment" />
+        <argument
+            android:name="deails"
+            app:argType="com.example.virginmoney.model.people.PeopleItem[]" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_rooms"
         android:name="com.example.virginmoney.ui.fragments.RoomFragment"
         android:label="@string/title_room"
         tools:layout="@layout/fragment_room" />
+    <fragment
+        android:id="@+id/colleagueDetailsFragment"
+        android:name="com.example.virginmoney.ui.fragments.ColleagueDetailsFragment"
+        android:label="Colleague details"
+        tools:layout="@layout/fragment_colleague_details" >
+        <action
+            android:id="@+id/action_colleagueDetailsFragment_to_navigation_colleagues"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_colleagues" />
+    </fragment>
 
 </navigation>
