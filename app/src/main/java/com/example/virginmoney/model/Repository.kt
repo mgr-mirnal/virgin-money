@@ -1,7 +1,7 @@
 package com.example.virginmoney.model
 
 import android.util.Log
-import com.example.virginmoney.api.Api
+import com.example.virginmoney.api.ApiService
 import com.example.virginmoney.ui.ResponseState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,9 +13,9 @@ interface Repository {
 }
 
 private const val TAG = "Repository"
-class RepositoryImp {
+
     class RepositoryImpl @Inject constructor(
-        private val service : Api
+        private val service : ApiService
     ): Repository{
 
         override fun getPeople() = flow {
@@ -60,4 +60,3 @@ class RepositoryImp {
 
 
     }
-}

@@ -29,9 +29,15 @@ class RoomAdapter (
             private val binding: RoomListBinding
         ): RecyclerView.ViewHolder(binding.root){
             fun onBind(item: RoomItem){
+                val occupied = item.isOccupied
                 binding.tvId.text = item.id
-                binding.tvBoolean.text = item.isOccupied.toString()
                 binding.tvLimit.text = item.maxOccupancy.toString()
+
+                if(occupied){
+                    binding.tvBoolean.text = "Reserved"
+                }else{
+                    binding.tvBoolean.text = "Empty"
+                }
             }
 
         }

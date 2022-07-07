@@ -69,7 +69,7 @@ class ViewModel @Inject constructor(
 
     fun setColleagueDetails(node: PeopleItem) {
         currentColleague = node
-        _peopleResponse.value = ResponseState.Loading
+
     }
 
     fun setLoadingState(){_peopleResponse.value = ResponseState.Loading}
